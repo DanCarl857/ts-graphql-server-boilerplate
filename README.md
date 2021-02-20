@@ -5,7 +5,7 @@
 * Visit `http://localhost:4000/graphql`
 
 #### Database
-Currently makes use of MongoDB, but you can visit [https://typeorm.io/#/using-ormconfig](here) on how to change that.
+Currently makes use of MongoDB, but you can visit [here](https://typeorm.io/#/using-ormconfig) on how to change that.
 
 #### Testing
 For testing we use Jest
@@ -15,4 +15,4 @@ In Progress
 
 #### Credits
 
-* Original by [](Ben Awad)
+* Original by [Ben Awad]()
