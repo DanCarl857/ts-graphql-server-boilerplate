@@ -1,5 +1,5 @@
 import { ObjectId } from "mongoose";
-import { Field, ObjectType, ID } from "type-graphql";
+import { Field, ObjectType, ID, Root } from "type-graphql";
 import {Entity, Column, BaseEntity, ObjectIdColumn} from "typeorm";
 
 @ObjectType()
@@ -22,7 +22,9 @@ export class User extends BaseEntity {
     password: string
 
     @Field()
-    name: string
+    name(@Root() parent: User): string {
+        return `${parent.firstName} ${parent.lastName}`
+    }
 
     @Field()
     @Column("text", { unique: true })
