@@ -14,7 +14,6 @@ declare module "express-session" {
 export class MeResolver {
     @Query(() => User, { nullable: true })
     async me(@Ctx() ctx: MyContext): Promise<User | undefined> {
-        console.log(ctx.req.session!.userId)
         if (!ctx.req.session!.userId) {
             return undefined
         }
