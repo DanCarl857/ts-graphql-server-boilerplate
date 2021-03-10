@@ -28,6 +28,9 @@ const main = async () => {
             LoginResolver,
             MeResolver
         ],
+        authChecker: ({ context: { req } }) => {
+            return !!req.session.userId
+        }
     })
 
     const app = Express()

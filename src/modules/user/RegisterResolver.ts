@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Arg } from 'type-graphql'
+import { Resolver, Query, Mutation, Arg, Authorized } from 'type-graphql'
 import bcrypt from 'bcryptjs'
 
 import { RegisterPayload } from './payload/RegisterPayload'
@@ -7,6 +7,7 @@ import { User } from './../../entity/User'
 
 @Resolver()
 export class RegisterResolver {
+    @Authorized()
     @Query(() => String)
     async hello() {
         return "Hello World"
