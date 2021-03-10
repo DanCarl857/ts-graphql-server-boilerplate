@@ -12,6 +12,7 @@ import { RegisterResolver } from './modules/user/RegisterResolver'
 import { LoginResolver } from './modules/user/LoginResolver'
 import { MeResolver } from './modules/user/MeResolver'
 import { ObjectId } from 'mongoose'
+import { ConfirmUserResolver } from './modules/user/ConfirmUserResolver'
 
 declare module "express-session" {
     interface Session {
@@ -26,7 +27,8 @@ const main = async () => {
         resolvers: [
             RegisterResolver,
             LoginResolver,
-            MeResolver
+            MeResolver,
+            ConfirmUserResolver
         ],
         authChecker: ({ context: { req } }) => {
             return !!req.session.userId

@@ -26,6 +26,9 @@ export class User extends BaseEntity {
         return `${parent.firstName} ${parent.lastName}`
     }
 
+    @Column("bool", { default: false })
+    confirmed: boolean
+
     @Field()
     @Column("text", { unique: true })
     email: string
