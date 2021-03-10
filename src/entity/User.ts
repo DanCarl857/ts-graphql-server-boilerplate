@@ -1,3 +1,4 @@
+import { Min } from "class-validator";
 import { ObjectId } from "mongoose";
 import { Field, ObjectType, ID, Root } from "type-graphql";
 import {Entity, Column, BaseEntity, ObjectIdColumn} from "typeorm";
@@ -19,6 +20,7 @@ export class User extends BaseEntity {
     lastName: string
 
     @Column()
+    @Min(5)
     password: string
 
     @Field()

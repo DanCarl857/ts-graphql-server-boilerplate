@@ -1,7 +1,7 @@
 import { Resolver, Query, Mutation, Arg, Authorized } from 'type-graphql'
 import bcrypt from 'bcryptjs'
 
-import { RegisterPayload } from './payload/RegisterPayload'
+import { UserPayload } from './payload/UserPayload'
 import { RegisterInput } from './input/RegisterInput'
 import { User } from './../../entity/User'
 import { sendEmail } from './../../utils/sendEmail'
@@ -15,8 +15,8 @@ export class RegisterResolver {
         return "Hello World"
     }
 
-    @Mutation(() => RegisterPayload)
-    async register(@Arg('input') input: RegisterInput): Promise<RegisterPayload> {
+    @Mutation(() => UserPayload)
+    async register(@Arg('input') input: RegisterInput): Promise<UserPayload> {
 
         const hashedPassword = await bcrypt.hash(input.password, 12);
 
@@ -29,6 +29,6 @@ export class RegisterResolver {
 
         await sendEmail(user.email, await createConfirmationUrl(user.id.toString()))
 
-        return Object.assign(new RegisterPayload, { user })
+        return Object.assign(new UserPayload, { user })
     }
 }
